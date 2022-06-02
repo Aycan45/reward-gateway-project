@@ -27,21 +27,6 @@
         }
 
 
-        protected function checkUser($email)
-        {
-            $statement = $this->connect()->prepare("SELECT email FROM users WHERE email =?;");
-
-
-            if (!$statement->execute($email)) {
-                $statement = null;
-                header("location: ./index.php?error=stmtfailed");
-                exit();
-            }
-
-           
-            
-        }
-
     } 
 
 
