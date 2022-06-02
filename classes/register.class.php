@@ -38,7 +38,8 @@
                 exit();
             }
 
-            return $statement->rowCount() > 0;
+           
+            
         }
 
     } 

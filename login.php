@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_POST['register'])) {
+if (isset($_POST['login'])) {
     
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -10,7 +10,7 @@ if (isset($_POST['register'])) {
     include('./controllers/login.controller.php');
 
     $login = new LoginController($email, $password);
-    $register->loginUser();
+    $login->loginUser();
 
     header("location: ./index.php");
     exit;

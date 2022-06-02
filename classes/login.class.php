@@ -20,17 +20,53 @@
                 echo $e->getMessage();
                 header("location: login.html");
             }
-
-            if ( $statement->rowCount() > 0) {
-
-                $_SESSION['email'] = $email;
-
-                header("Location: index.php");
+            if ($statement->rowCount == 0) {
+                $statement = null;
+                header("location: ./index.php?error=usernotfound");
+                exit();
             }
-            else {
-                echo "<h2>Wrong credentials</h2>";
 
-                header('refresh:3; url=login.html');
+
+            $hashedpassword = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $checkPassword = password_verify($password, $hashedpassword[0]["PASSWORD"]);
+
+            if ($checkPassword == false) {
+                $statement = null;
+                header("location: ./index.php?error=wrongpassword");
+                exit();
+            }
+            elseif ($checkPassword == true) {
+                $statement = $this->connect()->prepare("SELECT * FROM users WHERE EMAIL = :email AND PASSWORD= :password;");
+
+                $statement->bindValue('email', $email, PDO::PARAM_STR);
+
+                $statement->bindValue('password', $password, PDO::PARAM_STR);
+
+                try {
+                    if (!$statement->execute()) {
+                        $statement = null;
+                        header("location: ./index.php?error=stmtfailed1");
+                        exit();
+                    }
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                    header("location: login.html");
+                }
+                if ($statement->rowCount == 0) {
+                    $statement = null;
+                    header("location: ./index.php?error=usernotfound");
+                    exit();
+                }
+
+                $user = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                session_start();
+
+                $_SESSION['id'] = $user[0]['ID'];
+                $_SESSION['email'] = $user[0]['EMAIL'];
+
+                $statement = null;
             }
             
         }
