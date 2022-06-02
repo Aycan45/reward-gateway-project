@@ -28,7 +28,7 @@
             <a class="nav-link" href="#">Send</a>
         </li>
             <?php 
-                if (isset($_SESSION['userid'])) {
+                if (isset($_SESSION['email'])) {
 
             ?>
             <li class="nav-item">

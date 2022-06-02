@@ -12,8 +12,6 @@ if (isset($_POST['login'])) {
     $login = new LoginController($email, $password);
     $login->loginUser();
 
-    header("location: ./index.php");
-    exit;
 
 }
 
