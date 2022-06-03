@@ -4,13 +4,13 @@
 
         protected function getUser($email, $password)
         {
-            $statement = $this->connect()->prepare("SELECT * FROM users WHERE EMAIL = :email AND PASSWORD = :password;");  
+            $statement = $this->connect()->prepare("SELECT * FROM users WHERE EMAIL = :email");  
 
             $statement->bindValue('email', $email, PDO::PARAM_STR);
 
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $statement->execute();
 
-            $statement->bindValue('password', $hashedPassword, PDO::PARAM_STR);
+            $result = $statement->fetch();
 
             try {
                 if (!$statement->execute()) {
@@ -28,7 +28,15 @@
                 header("refresh: 3; url=login.html");
             }
             else if($statement->rowCount() == 1){
-                echo "OK";
+
+                if (password_verify($password, $result["PASSWORD"])) {
+                    header("./index.php");
+                }
+                else {
+                    echo "Wrong password";
+
+                    header("refresh: 3; url=login.html");
+                }
             }
             
         }
