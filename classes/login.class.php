@@ -30,7 +30,8 @@
             else if($statement->rowCount() == 1){
 
                 if (password_verify($password, $result["PASSWORD"])) {
-                    header("./index.php");
+                    
+                    header("location: ./index.php");
                 }
                 else {
                     echo "Wrong password";

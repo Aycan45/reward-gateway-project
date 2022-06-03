@@ -2,6 +2,7 @@
 
 if (isset($_POST['register'])) {
     
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -9,7 +10,7 @@ if (isset($_POST['register'])) {
     include('./classes/register.class.php');
     include('./controllers/register.controller.php');
 
-    $register = new RegisterController($email, $password);
+    $register = new RegisterController($username, $email, $password);
     $register->registerUser();
 
     header("location: ./index.php");

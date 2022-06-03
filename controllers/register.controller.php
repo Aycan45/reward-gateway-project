@@ -2,12 +2,14 @@
 
 class RegisterController extends Register{
 
+    private $username;
     private $email;
     private $password;
 
 
-    public function __construct($email, $password)
+    public function __construct($username, $email, $password)
     {
+        $this->username = $username;
         $this->email = $email;
         $this->password = $password;
     }
@@ -23,13 +25,16 @@ class RegisterController extends Register{
             exit();
         }
 
-        $this->setUser($this->email, $this->password);
+        $this->setUser($this->username, $this->email, $this->password);
     }
 
     private function emptyInput()
     {
 
         if (!$this->email) {
+            return false;
+        }
+        if (!$this->username) {
             return false;
         }
         return (bool) $this->password;
