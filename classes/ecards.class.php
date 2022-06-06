@@ -4,19 +4,17 @@ class eCards extends DataBaseHelper{
 
     protected function getAlleCards(){
 
-        $statement =$this->connect()->prepare("SELECT * FROM ecards;");
+        $sql = "SELECT * FROM eCards";
+        $result = $this->connect()->query($sql);
+        $numRows = $result->num_rows;
 
-        if ($statement->rowCount() > 0) {
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        if ($numRows > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 $data[] = $row;
             }
             return $data;
-        }
-        else{
-            echo "No data";
         }
 
     }
 
 }
-?>
