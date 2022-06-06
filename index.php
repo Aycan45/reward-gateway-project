@@ -11,60 +11,10 @@
     <title>eCard sending system</title>
 </head>
 <body>
-<<<<<<< HEAD
     <?php
         include('./includes/header.inc.php');
     ?>
     <div class="row m-2">
-=======
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">eCards sender</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="./index.php">Home</a>
-        </li>
-        <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link" href="./cards.php">eCards</a>
-=======
-            <a class="nav-link" href="./cards.php">eCards</a>
->>>>>>> eb0e6ac176d10912e618c82e3536b972c30a584b
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Send</a>
-        </li>
-            <?php 
-                if (isset($_SESSION['email'])) {
-
-            ?>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><?php echo $_SESSION['email'];?></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./logout.php">Logout</a>
-            </li>
-            <?php 
-                }
-                else 
-                {
-            ?>
-             <li class="nav-item">
-                <a class="nav-link" href="./register.html">Register</a>
-             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./login.html">Log in</a>
-            </li>
-            <?php 
-                }
-            ?>
-        </ul>
-    </div>
-    </nav>
->>>>>>> e94dd0fab95dc2b0a40283edd4e457a262011f76
     <?php 
         include("./classes/databasehelper.class.php");
         include("./classes/eCards.class.php");
