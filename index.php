@@ -19,10 +19,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="./index.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">eCards</a>
+            <a class="nav-link" href="./cards.php">eCards</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Send</a>
@@ -33,6 +33,8 @@
             ?>
             <li class="nav-item">
                 <a class="nav-link" href="#"><?php echo $_SESSION['email'];?></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="./logout.php">Logout</a>
             </li>
             <?php 
@@ -42,6 +44,8 @@
             ?>
              <li class="nav-item">
                 <a class="nav-link" href="./register.html">Register</a>
+             </li>
+            <li class="nav-item">
                 <a class="nav-link" href="./login.html">Log in</a>
             </li>
             <?php 
@@ -50,5 +54,15 @@
         </ul>
     </div>
     </nav>
+    <?php 
+        include("./classes/databasehelper.class.php");
+        include("./classes/ecards.class.php");
+        include("./controllers/cards.controller.php");
+
+        $ecards = new CardsController;
+
+        $ecards->showAlleCards();
+    
+    ?>
 </body>
 </html>

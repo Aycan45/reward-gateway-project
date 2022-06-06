@@ -6,6 +6,10 @@ if (isset($_POST['register'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    session_start();
+
+    $_SESSION['email'] = $email;
+
     include('./classes/databasehelper.class.php');
     include('./classes/register.class.php');
     include('./controllers/register.controller.php');
