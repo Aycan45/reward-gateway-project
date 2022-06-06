@@ -22,7 +22,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">eCards</a>
+            <a class="nav-link" href="./eCards.php">eCards</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Send</a>

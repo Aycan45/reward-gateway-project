@@ -4,7 +4,7 @@ class eCards extends DataBaseHelper{
 
     protected function getAlleCards(){
 
-        $sql = "SELECT * FROM eCards";
+        $sql = "SELECT * FROM ecards";
         $result = $this->connect()->query($sql);
         $numRows = $result->num_rows;
 
