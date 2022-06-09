@@ -10,7 +10,7 @@
 
             $statement->execute();
 
-            $result = $statement->fetch();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
 
             try {
                 if (!$statement->execute()) {
@@ -30,8 +30,15 @@
             else if($statement->rowCount() == 1){
 
                 if (password_verify($password, $result["PASSWORD"])) {
-                    
-                    header("location: ./index.php");
+
+                    if ($result["ROLE"] == "admin"){
+
+                        header("location: ./admin.php");
+
+                    }
+                    else
+                        header("location: ./index.php");
+
                 }
                 else {
                     echo "Wrong password";
