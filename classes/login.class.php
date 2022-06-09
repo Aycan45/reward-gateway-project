@@ -23,7 +23,7 @@
                 header("location: login.html");
             }
             if ($statement->rowCount() == 0) {
-                echo "User not found";
+                echo "<script>alert(User not found)</script>";
 
                 header("refresh: 3; url=login.html");
             }
@@ -41,7 +41,7 @@
 
                 }
                 else {
-                    echo "Wrong password";
+                    echo "<script>alert(Wrong password)</script>";
 
                     header("refresh: 3; url=login.html");
                 }

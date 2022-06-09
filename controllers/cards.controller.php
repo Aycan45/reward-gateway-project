@@ -2,6 +2,7 @@
 
 class CardsController extends eCards{
 
+
     public function showAlleCards(){
 
         $datas = $this->getAlleCards();
@@ -55,6 +56,31 @@ class CardsController extends eCards{
         }
         else{
            return false;
+        }
+    }
+
+    public function addCard($name, $image, $description){
+        
+        if ($this->emptyInput($name, $image, $description) == true) {
+            header("location: ./add-card.php?error=emptyinput");
+            exit();
+        }
+        else
+            $this->setCard($name, $image, $description);
+
+    }
+
+    private function emptyInput($name, $image, $description)
+    {
+
+        if (!$name) {
+            return false;
+        }
+        if (!$image) {
+            return false;
+        }
+        if (!$description) {
+            return false;
         }
     }
 

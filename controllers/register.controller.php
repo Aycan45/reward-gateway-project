@@ -16,11 +16,11 @@ class RegisterController extends Register{
 
     public function registerUser()
     {
-        if ($this->emptyInput() == false) {
+        if ($this->emptyInput() == true) {
             header("location: ./index.php?error=emptyinput");
             exit();
         }
-        if ($this->invalidEmail() == false) {
+        if ($this->invalidEmail() == true) {
             header("location: ./index.php?error=email");
             exit();
         }
